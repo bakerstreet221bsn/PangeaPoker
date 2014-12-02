@@ -9,14 +9,16 @@ MESSAGE_TYPES = [
 ]
 
 
-class Request(object):
+def create_bet_message(table, player, amount):
+    return Message(dict(messageType=MESSAGE_TYPE_BET, table=table, player=player, amount=amount))
 
-    data = None
 
-    def __init__(self):
-        pass
+class Message(object):
 
-    def parse(self, message):
+    def __init__(self, data=None):
+        self.data = data
+
+    def from_json(self, message):
         parsed = json.load(message)
         print(parsed)
 
@@ -39,6 +41,21 @@ class Request(object):
 
         self.data = parsed["args"]
         return True
+
+    def to_json(self):
+        if self.data is None:
+            print("No data set")
+            return None
+
+        if self.get_message_type() is None:
+            print("No message type set")
+            return None
+
+        msg = {
+            "requestType": "poker",
+            "args": self.data
+        }
+        return json.dumps(msg)
 
     def get_message_type(self):
         if self.data is None:

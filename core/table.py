@@ -1,4 +1,4 @@
-
+from core.card import *
 
 class Table(object):
 
@@ -10,7 +10,7 @@ class Table(object):
 
 
     def deal_cards(self):
-        deck = card.create_deck()
+        deck = create_deck()
         self.cards = self.__mental_poker.shuffle(deck)
 
         dealt_cards = []

@@ -8,6 +8,7 @@ def create_deck():
 
     return card
 
+
 class Card(object):
 
     def __init__(self):

@@ -1,3 +1,4 @@
+
 class MentalPoker(object):
 
     def __init__(self):
@@ -6,9 +7,12 @@ class MentalPoker(object):
     def shuffle(self, cards):
         return cards
 
-    # Private methods
-    def __encrypt_card(self, card):
-        pass
+    def show_cards(self, cards):
 
-    def __decrypt_card(self, card):
-        pass
+        unmasked_cards = []
+
+        for card in cards:
+            unmasked = tmcg.unmask_card(card)
+            unmasked_cards.append(unmasked)
+
+        return unmasked_cards
