@@ -20,6 +20,7 @@ class MessageHandler(object):
         if not method:
             raise Exception("Unknown message type %s" % request.message_type)
 
+        #
         response = method(request)
         return response.to_json()
 
