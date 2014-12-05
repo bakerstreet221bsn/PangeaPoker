@@ -1,6 +1,8 @@
 import socket
 import sys
+import traceback
 from threading import Thread
+from messaging import message_handler
 
 
 def start(port):
@@ -27,16 +29,28 @@ def start(port):
 
 
 def client_thread(connection):
-    connection.send("CONNECTED!\n")
 
-    while True:
-        data = connection.recv(1024)
-        if not data:
-            break
+    try:
+        # Read message from client
+        message = ""
+        while True:
+            data = connection.recv(1024)
+            if not data:
+                break
 
-        reply = "RECEIVED: " + data
-        connection.sendall(reply)
+            message += message
+            print("Received data: " + data)
 
-    connection.close()
+        # Process message
+        handler = message_handler.MessageHandler()
+        response = handler.process_message(message)
 
-
+        # Send response back to client
+        connection.replyall(response)
+    except Exception:
+        print("Got exception while trying to read from the client connection" + traceback.format_exc())
+    finally:
+        try:
+            connection.close()
+        except Exception as ex:
+            print("Exception received while trying to close the client connection " + ex)
