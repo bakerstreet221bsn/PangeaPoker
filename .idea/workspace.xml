@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81fbca6b-7eb2-4fa4-b4ad-d94fea07558c" name="Default" comment=".">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lobby/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messaging/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messaging/events.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/pot.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lobby/requests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messaging/requests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messaging/responses.py" />
-      <change type="DELETED" beforePath="D:\John\Data\Dropbox\Programming\git\PangeaPoker\betting\betting.py" afterPath="" />
-      <change type="DELETED" beforePath="D:\John\Data\Dropbox\Programming\git\PangeaPoker\mentalpoker\tmcg.py" afterPath="" />
+    <list default="true" id="81fbca6b-7eb2-4fa4-b4ad-d94fea07558c" name="Default" comment="Added code for integrating with the RabbitMQ using amqpy. &#10;Added dealer_shuffle_cards request. This request will send shuffle_cards to  every player in the list using the message queue. &#10;Got server socket code fully working. &#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messaging/queue.py" />
+      <change type="DELETED" beforePath="D:\John\Data\Dropbox\Programming\git\PangeaPoker\core\server.py" afterPath="" />
+      <change type="DELETED" beforePath="D:\John\Data\Dropbox\Programming\git\PangeaPoker\messaging\message.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/John.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/John.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/betting/__init__.py" afterPath="$PROJECT_DIR$/betting/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server.py" afterPath="$PROJECT_DIR$/core/server.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/supernet/supernet.py" afterPath="$PROJECT_DIR$/supernet/supernet.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/__init__.py" afterPath="$PROJECT_DIR$/core/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lobby/__init__.py" afterPath="$PROJECT_DIR$/lobby/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/__init__.py" afterPath="$PROJECT_DIR$/messaging/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/events.py" afterPath="$PROJECT_DIR$/messaging/events.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/message_handler.py" afterPath="$PROJECT_DIR$/messaging/message_handler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lobby/requests.py" afterPath="$PROJECT_DIR$/lobby/requests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/requests.py" afterPath="$PROJECT_DIR$/messaging/requests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messaging/responses.py" afterPath="$PROJECT_DIR$/messaging/responses.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\John\Data\Dropbox\Programming\git\PangeaPoker\core\message.py" afterPath="$PROJECT_DIR$/messaging/message.py" />
-      <change type="MOVED" beforePath="D:\John\Data\Dropbox\Programming\git\PangeaPoker\core\message_handler.py" afterPath="$PROJECT_DIR$/messaging/message_handler.py" />
     </list>
     <ignored path="PangeaPoker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +28,8 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PangeaPoker$main.coverage" NAME="main Coverage Results" MODIFIED="1417650051079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PangeaPoker$main___second_client_.coverage" NAME="main - 8889 Coverage Results" MODIFIED="1417979645277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PangeaPoker$main.coverage" NAME="main Coverage Results" MODIFIED="1417979672661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -43,13 +43,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="message.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/messaging/message.py">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="41" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state line="0" column="27" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -57,8 +55,28 @@
       <file leaf-file-name="events.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/messaging/events.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="111" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+            <state line="1" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/messaging/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="9" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.80754715" vertical-offset="184" max-vertical-offset="714">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queue.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/messaging/queue.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="0" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,7 +84,16 @@
       <file leaf-file-name="requests.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lobby/requests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+            <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="201" column="14" selection-start="2512" selection-end="2512" vertical-scroll-proportion="-18.36" vertical-offset="2958" max-vertical-offset="3825">
               <folding />
             </state>
           </provider>
@@ -75,70 +102,36 @@
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lobby/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="38" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+            <state line="14" column="38" selection-start="287" selection-end="301" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
-                <marker date="1417732014755" expanded="true" signature="110:579" placeholder="..." />
-                <marker date="1417732014755" expanded="true" signature="229:342" placeholder="..." />
-                <marker date="1417732014755" expanded="true" signature="554:579" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/__init__.py">
+        <entry file="file://D:/Python34/Lib/json/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="21" selection-start="4" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+            <state line="264" column="0" selection-start="10118" selection-end="10118" vertical-scroll-proportion="0.0" vertical-offset="4291" max-vertical-offset="5712">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="message_handler.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/messaging/message_handler.py">
+      <file leaf-file-name="socketserver.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/Python34/Lib/socketserver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="11" selection-start="725" selection-end="725" vertical-scroll-proportion="0.4955157" vertical-offset="0" max-vertical-offset="1462">
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mental_poker.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mentalpoker/mental_poker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state line="428" column="0" selection-start="14158" selection-end="14158" vertical-scroll-proportion="0.0" vertical-offset="7045" max-vertical-offset="12767">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/server.py">
+      <file leaf-file-name="threading.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://D:/Python34/Lib/threading.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="26" selection-start="1006" selection-end="1013" vertical-scroll-proportion="0.0" vertical-offset="145" max-vertical-offset="1037">
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="table.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/table.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pot.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/pot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
+            <state line="920" column="0" selection-start="32061" selection-end="32061" vertical-scroll-proportion="0.0" vertical-offset="15443" max-vertical-offset="23188">
               <folding />
             </state>
           </provider>
@@ -170,28 +163,33 @@
         <option value="$PROJECT_DIR$/core/request_handler.py" />
         <option value="$PROJECT_DIR$/core/table.py" />
         <option value="$PROJECT_DIR$/core/card.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/core/request.py" />
         <option value="$PROJECT_DIR$/mentalpoker/tmcg.py" />
         <option value="$PROJECT_DIR$/mentalpoker/mental_poker.py" />
         <option value="$PROJECT_DIR$/supernet/__init__.py" />
         <option value="$PROJECT_DIR$/core/message_handler.py" />
         <option value="$PROJECT_DIR$/core/message.py" />
-        <option value="$PROJECT_DIR$/messaging/__init__.py" />
-        <option value="$PROJECT_DIR$/core/server.py" />
         <option value="$PROJECT_DIR$/core/pot.py" />
         <option value="$PROJECT_DIR$/lobby/lobby.py" />
         <option value="$PROJECT_DIR$/supernet/supernet.py" />
         <option value="$PROJECT_DIR$/betting/betting.py" />
         <option value="$PROJECT_DIR$/betting/__init__.py" />
         <option value="$PROJECT_DIR$/utils/__init__.py" />
-        <option value="$PROJECT_DIR$/lobby/__init__.py" />
-        <option value="$PROJECT_DIR$/messaging/events.py" />
-        <option value="$PROJECT_DIR$/messaging/requests.py" />
-        <option value="$PROJECT_DIR$/lobby/requests.py" />
-        <option value="$PROJECT_DIR$/messaging/responses.py" />
+        <option value="$PROJECT_DIR$/client.py" />
+        <option value="$PROJECT_DIR$/core/server.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/messaging/message.py" />
+        <option value="$PROJECT_DIR$/messaging/pangeamessage.py" />
+        <option value="$PROJECT_DIR$/messaging/pangea_message.py" />
+        <option value="$PROJECT_DIR$/lobby/__init__.py" />
+        <option value="$PROJECT_DIR$/lobby/requests.py" />
+        <option value="$PROJECT_DIR$/messaging/events.py" />
+        <option value="$PROJECT_DIR$/core/__init__.py" />
+        <option value="$PROJECT_DIR$/messaging/requests.py" />
+        <option value="$PROJECT_DIR$/messaging/responses.py" />
+        <option value="$PROJECT_DIR$/messaging/__init__.py" />
         <option value="$PROJECT_DIR$/messaging/message_handler.py" />
+        <option value="$PROJECT_DIR$/messaging/queue.py" />
       </list>
     </option>
   </component>
@@ -227,6 +225,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -256,20 +255,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PangeaPoker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PangeaPoker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="supernet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -329,28 +314,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PangeaPoker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PangeaPoker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="betting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.lastSelected" value="fileTemplates" />
+    <property name="options.lastSelected" value="vcs.CVS" />
     <property name="last_opened_file_path" value="D:/Python27/python.exe" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -378,7 +348,7 @@
       <recent name="D:\John\Data\Dropbox\Programming\git\PangeaPoker\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.main - 8889">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -394,7 +364,9 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -482,9 +454,6 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -506,6 +475,9 @@
       <option name="PUREUNITTEST" value="true" />
       <option name="PARAMS" value="" />
       <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -548,8 +520,30 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Python.main" />
+    <configuration default="false" name="main - 8889" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="PangeaPoker" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="8889" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Python.main - 8889" />
+      <item index="1" class="java.lang.String" itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -590,32 +584,44 @@
       <created>1417563881926</created>
       <updated>1417563881926</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <created>1417739243285</created>
+      <updated>1417739243285</updated>
+    </task>
+    <task id="LOCAL-00004" summary=".">
+      <created>1417739520229</created>
+      <updated>1417739520229</updated>
+    </task>
+    <task id="LOCAL-00005" summary=".">
+      <created>1417739685470</created>
+      <updated>1417739685470</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="24" width="1936" height="1024" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32897604" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32849163" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1368477" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3988827" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35511982" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37877095" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17973857" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -639,6 +645,18 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/core/table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/pot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="153" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/messaging/requests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
@@ -648,9 +666,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/messaging/responses.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/messaging/__init__.py">
@@ -662,23 +678,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/supernet/supernet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="238">
-          <folding />
-        </state>
+        <state line="5" column="0" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="238" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/betting/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/__init__.py">
@@ -709,45 +719,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messaging/message.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="26" selection-start="437" selection-end="441" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1190">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/card.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="20" selection-start="96" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="340">
-          <folding />
-        </state>
+        <state line="6" column="20" selection-start="96" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="340" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/messaging/message_handler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="21" selection-start="157" selection-end="164" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="272">
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/supernet/supernet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="10" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0" vertical-offset="250" max-vertical-offset="816">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/table.py">
@@ -776,67 +762,72 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="964" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://D:/Python34/Lib/site-packages/pika/connection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="201" column="14" selection-start="2512" selection-end="2512" vertical-scroll-proportion="0.5156695" vertical-offset="3055" max-vertical-offset="3825">
+        <state line="360" column="0" selection-start="12413" selection-end="12413" vertical-scroll-proportion="0.0" vertical-offset="5821" max-vertical-offset="26333">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://D:/Python34/Lib/site-packages/pika/frame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="26" selection-start="83" selection-end="83" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+        <state line="188" column="0" selection-start="5278" selection-end="5278" vertical-scroll-proportion="0.0" vertical-offset="2931" max-vertical-offset="4590">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mentalpoker/mental_poker.py">
+    <entry file="file://D:/Python34/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+        <state line="920" column="0" selection-start="32061" selection-end="32061" vertical-scroll-proportion="0.0" vertical-offset="15443" max-vertical-offset="23188">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/card.py">
+    <entry file="file://D:/Python34/Lib/site-packages/amqpy/consumer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+        <state line="70" column="8" selection-start="2815" selection-end="2815" vertical-scroll-proportion="0.33271718" vertical-offset="993" max-vertical-offset="1802">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/__init__.py">
+    <entry file="file://D:/Python34/Lib/json/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="964">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/betting/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="12" selection-start="148" selection-end="148" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
+        <state line="264" column="0" selection-start="10118" selection-end="10118" vertical-scroll-proportion="0.0" vertical-offset="4291" max-vertical-offset="5712">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="964">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/server.py">
+    <entry file="file://D:/Python34/Lib/socketserver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="26" selection-start="1006" selection-end="1013" vertical-scroll-proportion="0.0" vertical-offset="145" max-vertical-offset="1037">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state line="428" column="0" selection-start="14158" selection-end="14158" vertical-scroll-proportion="0.0" vertical-offset="7045" max-vertical-offset="12767">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/table.py">
+    <entry file="file://$PROJECT_DIR$/supernet/supernet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="727">
+        <state line="5" column="0" selection-start="81" selection-end="143" vertical-scroll-proportion="0.15977444" vertical-offset="0" max-vertical-offset="532">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mentalpoker/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="638">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="201" column="14" selection-start="2512" selection-end="2512" vertical-scroll-proportion="-18.36" vertical-offset="2958" max-vertical-offset="3825">
           <folding />
         </state>
       </provider>
@@ -850,94 +841,123 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="4" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+        <state line="0" column="27" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/betting/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="12" selection-start="60" selection-end="60" vertical-scroll-proportion="0.09586466" vertical-offset="0" max-vertical-offset="532">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="0.41541353" vertical-offset="0" max-vertical-offset="532">
+          <folding>
+            <element signature="e#0#56#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="727">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/pot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
+        <state line="3" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="0.09586466" vertical-offset="0" max-vertical-offset="532">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/card.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="148" selection-end="148" vertical-scroll-proportion="0.38345864" vertical-offset="0" max-vertical-offset="532">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lobby/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="38" selection-start="554" selection-end="554" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+        <state line="14" column="38" selection-start="287" selection-end="301" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <marker date="1417732014755" expanded="true" signature="110:579" placeholder="..." />
-            <marker date="1417732014755" expanded="true" signature="229:342" placeholder="..." />
-            <marker date="1417732014755" expanded="true" signature="554:579" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messaging/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="727">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messaging/events.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="111" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mentalpoker/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="638">
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lobby/requests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+        <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/supernet/supernet.py">
+    <entry file="file://$PROJECT_DIR$/mentalpoker/mental_poker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="81" selection-end="143" vertical-scroll-proportion="0.09529148" vertical-offset="0" max-vertical-offset="892">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messaging/responses.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.038116593" vertical-offset="0" max-vertical-offset="892">
+        <state line="1" column="0" selection-start="1" selection-end="1" vertical-scroll-proportion="0.03195489" vertical-offset="0" max-vertical-offset="532">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/messaging/requests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="51" selection-start="395" selection-end="400" vertical-scroll-proportion="0.17152466" vertical-offset="0" max-vertical-offset="892">
+        <state line="2" column="0" selection-start="25" selection-end="25" vertical-scroll-proportion="0.06390978" vertical-offset="0" max-vertical-offset="532">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/messaging/message.py">
+    <entry file="file://$PROJECT_DIR$/messaging/responses.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="41" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+        <state line="10" column="17" selection-start="318" selection-end="318" vertical-scroll-proportion="0.31954888" vertical-offset="0" max-vertical-offset="532">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="917" selection-end="917" vertical-scroll-proportion="0.58458644" vertical-offset="250" max-vertical-offset="782">
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/messaging/message_handler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="11" selection-start="725" selection-end="725" vertical-scroll-proportion="0.4955157" vertical-offset="0" max-vertical-offset="1462">
+        <state line="66" column="12" selection-start="2259" selection-end="2259" vertical-scroll-proportion="0.0" vertical-offset="963" max-vertical-offset="2040">
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messaging/queue.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="0" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messaging/events.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/messaging/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="9" selection-start="1105" selection-end="1105" vertical-scroll-proportion="0.80754715" vertical-offset="184" max-vertical-offset="714">
+          <folding />
         </state>
       </provider>
     </entry>

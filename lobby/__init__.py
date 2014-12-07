@@ -1,6 +1,7 @@
 from lobby import requests
-from messaging.message import *
+from messaging import *
 from datetime import datetime
+
 
 class Lobby(object):
 
@@ -25,4 +26,4 @@ class Lobby(object):
         pass
 
     def __send_request(self, request):
-        return Message()
+        return PangeaMessage()
