@@ -1,9 +1,16 @@
-from lobby import requests
-from messaging import *
-from datetime import datetime
+from messaging import PangeaMessage
+
+MESSAGE_TYPES_GET_TABLES = "get_table"
 
 
-class Lobby(object):
+class LobbyMessages(object):
+
+    @staticmethod
+    def get_tables_req(self):
+        return PangeaMessage(message_type=MESSAGE_TYPES_GET_TABLES)
+
+
+class LobbyModule(object):
 
     __lobby_url = "http://api.pangeapoker.com/lobby"
 
@@ -11,7 +18,7 @@ class Lobby(object):
         pass
 
     def get_tables(self):
-        request = requests.get_tables()
+        request = LobbyMessages.get_tables_req()
         response = self.__send_request(request)
 
         return response
@@ -26,4 +33,5 @@ class Lobby(object):
         pass
 
     def __send_request(self, request):
-        return PangeaMessage()
+        response = PangeaMessage()
+        return response

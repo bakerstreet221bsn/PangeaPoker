@@ -1,4 +1,4 @@
-class Betting(object):
+class BettingModule(object):
 
     def __init__(self):
         pass

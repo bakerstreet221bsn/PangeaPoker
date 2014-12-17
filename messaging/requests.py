@@ -14,4 +14,4 @@ class Requests(object):
 
     @staticmethod
     def shuffle_cards(table_id, player_id, cards):
-        return PangeaMessage(message_type=MESSAGE_TYPE_SHUFFLE_CARDS, table_id=table_id, player_id=player_id, cards=cards)
+        return PangeaMessage(message_type=MESSAGE_TYPE_SHUFFLE_CARDS_REQ, table_id=table_id, player_id=player_id, cards=cards)
