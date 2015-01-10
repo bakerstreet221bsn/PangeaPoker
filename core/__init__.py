@@ -20,5 +20,3 @@ class PangeaModule(object):
         if request is None or request.message_type is None:
             return False
         return hasattr(self, request.message_type)
-
-

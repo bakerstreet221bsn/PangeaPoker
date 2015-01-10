@@ -34,7 +34,7 @@ class MessageHandler(object):
                 raise PangeaException.missing_field("message_type")
             if not hasattr(self, request.message_type):
                 raise PangeaException(PangaeaErrorCodes.InvalidArgument,
-                                      "Unknown message type: '%s'" % request.message_type)
+                                      "Unknown message type: '{0}'".format(request.message_type))
 
             method = getattr(self, request.message_type)
 
@@ -82,7 +82,6 @@ class MessageHandler(object):
         for player_id in request.players:
             print("player_id %s" % player_id)
             queue_request = Requests.shuffle_cards(request.table_id, player_id, shuffled_cards)
-            #queue_response = self.__message_queue.send(queue_request)
             queue_response = self.__message_queue.send_rpc(queue_request)
             print("send_rpc response received")
             shuffled_cards = queue_response.cards

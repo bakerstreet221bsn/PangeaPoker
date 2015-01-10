@@ -1,5 +1,6 @@
 from core.card import *
 
+
 class Table(object):
 
     def __init__(self, mental_poker):
