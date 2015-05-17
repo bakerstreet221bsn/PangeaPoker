@@ -3,10 +3,10 @@
 <head>
     <title>Pangea Poker App</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/pangea.css">
+    <link rel="stylesheet" type="text/css" href="/test/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/test/css/pangea.css">
 
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/test/js/bootstrap.min.js"></script>
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script>
 
@@ -24,7 +24,7 @@
 
                 var port = $("#port").val();
 
-                ws = new WebSocket("ws://localhost:" + port + "/websocket");
+                ws = new WebSocket("ws://localhost:" + port + "/ws");
 
                 ws.onopen = function(e) {
                   //alert("Connection opened");

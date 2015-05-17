@@ -1,11 +1,7 @@
-from betting import BettingModule
-from lobby import LobbyModule
 from messaging import PangeaMessage
 from messaging.requests import Requests
 from messaging.responses import Responses
 from utils.errors import PangeaException, PangaeaErrorCodes
-from ui import UiModule
-from dealer import DealerModule
 import traceback
 
 
@@ -15,11 +11,11 @@ class MessageHandler(object):
 
         self.__message_queue = message_queue
         self.modules = []
-        self.modules.append(UiModule())
-        self.modules.append(DealerModule(self.__message_queue))
+        #self.modules.append(UiModule())
+        #self.modules.append(DealerModule(self.__message_queue))
 
-        self.__betting = BettingModule()
-        self.__lobby = LobbyModule()
+        #self.__betting = BettingModule()
+        #self.__lobby = LobbyModule()
 
     def process_message(self, json_string):
         # Parse the response from json

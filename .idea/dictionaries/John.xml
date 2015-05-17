@@ -8,6 +8,8 @@
       <w>pika</w>
       <w>pyzmg</w>
       <w>supernet</w>
+      <w>websocket</w>
+      <w>yaml</w>
     </words>
   </dictionary>
 </component>
