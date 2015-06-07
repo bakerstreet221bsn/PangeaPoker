@@ -18,13 +18,14 @@ class UiClient(object):
 
         self.write_message_callback(json_message)
 
-    def create_game(self, game_type=None, pot=None, big_blind=None, to_call=None):
+    def create_game(self, game_type=None, pot=None, big_blind=None, to_call=None, limit=None):
         game = {}
 
         self.add_if_not_null(game, "gametype", game_type)
         self.add_if_not_null(game, "pot", pot)
         self.add_if_not_null(game, "big_blind", big_blind)
         self.add_if_not_null(game, "to_call", to_call)
+        self.add_if_not_null(game, "limit", limit)
 
         return game
 
@@ -33,7 +34,7 @@ class UiClient(object):
 
         self.add_if_not_null(deal, "dealer", dealer)
         self.add_if_not_null(deal, "holecards", hole_cards)
-        self.add_if_not_null(deal, "boardcards", board_cards)
+        self.add_if_not_null(deal, "board", board_cards)
 
         return deal
 
@@ -55,12 +56,12 @@ class UiClient(object):
 
     def create_chips_to_pot(self):
         message = {}
-        message["action"] = {"chipsToPot": ""}
+        message["action"] = {"chipsToPot": 0}
         return message
 
-    def create_chips_to_player(self):
+    def create_chips_to_player(self, seat_number):
         message = {}
-        message["action"] = {"chipsToPlayer": ""}
+        message["action"] = {"chipsToPlayer": seat_number}
         return message
 
     def create_return_player_cards(self, seat_number):

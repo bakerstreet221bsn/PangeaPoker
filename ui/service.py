@@ -1,20 +1,24 @@
-from utils.settings import Settings
+import utils.settings
 from utils.errors import PangeaException, PangaeaErrorCodes
 from messaging import PangeaMessage
 import random
 import logging
 from dealer import DealerEvents
+from ui.client import UiClient
 
-default_names = ["Anna", "Alex", "Carl", "Cathy", "John", "Jack"]
+default_names = [
+    "Anna", "Alex", "Carl", "Cathy", "John", "Jack", "Kate", "Alexander",
+    "Peter", "Sebastian", "Ned", "Emily", "Shirlene", "Lisa", "Sarah"
+]
 
 
 class UiService(object):
 
-    def __init__(self, dealer_client, ui_client):
+    def __init__(self, dealer_client, ui_client: UiClient):
         self.logger = logging.getLogger(__name__)
         self.dealer_client = dealer_client
         self.ui_client = ui_client
-        self.settings = Settings()
+        self.settings = utils.settings.Settings()
 
     def handle_message(self, message):
         request = PangeaMessage().from_json(message)
@@ -42,6 +46,11 @@ class UiService(object):
 
         stack = 10000
         response = self.dealer_client.join_table(table_id, player_id, seat_number, stack)
+        utils.settings.joined_table = True
+
+        ui_message = self.create_empty_ui_message()
+        if self.process_table_data(response, ui_message):
+            self.ui_client.send_message(ui_message)
 
     def leave_table(self):
         self.logger.debug("leave_table")
@@ -49,6 +58,11 @@ class UiService(object):
         player_id = self.auto_create_player()
 
         response = self.dealer_client.leave_table(table_id, player_id)
+        utils.settings.joined_table = False
+
+        ui_message = self.create_empty_ui_message()
+        if self.process_table_data(response, ui_message):
+            self.ui_client.send_message(ui_message)
 
     def table_status(self, last_check):
         self.logger.debug("table_status")
@@ -68,78 +82,28 @@ class UiService(object):
         # really be stored in the database?
         response = self.dealer_client.get_table_status(table_id, player_id, last_check, log_messages=True)
 
-        ui_message = PangeaMessage(seats=[], chat=[], player={"sitting": 0})
+        ui_message = self.create_empty_ui_message()
 
-        if response.table:
-            if "seats" in response.table:
-                for item in response.table["seats"]:
-                    self.logger.debug("Processing seat: {0}".format(item))
-
-                    seat_player_id = item.get("player_id")
-                    if seat_player_id == player_id:
-                        is_player = 1
-                        ui_message.player = self.ui_client.create_player(
-                            sitting=1,
-                            hole_cards=item.get("hole_cards"),
-                            stack=item.get("stack"),
-                            seat_number=item.get("seat_number")
-                        )
-                    else:
-                        is_player = 0
-
-                    seat = self.ui_client.create_seat_item(
-                        seat_number=item.get("seat_number"),
-                        stack=item.get("stack"),
-                        player=is_player,
-                        playing=1,
-                        empty=0,
-                        player_cards=item.get("hole_cards"),
-                        bet=item.get("bet"),
-                        name=item.get("username")
-                    )
-                    ui_message.seats.append(seat)
-
-        if response.events:
-            for event in response.events:
-                event_name = event.get("event_name", "")
-                seat = self.get_matching_seat(ui_message.seats, event["seat_number"])
-
-                if seat is None:
-                    seat = self.ui_client.create_seat_item(seat_number=event["seat_number"])
-                #    ui_message.seats.append(seat)
-
-                if event_name == DealerEvents.PLAYER_JOIN_TABLE:
-                    seat["empty"] = 0
-                elif event_name == DealerEvents.PLAYER_LEAVE_TABLE:
-                    seat["empty"] = 1
-
-                    if seat.get("player_id", None) == player_id:
-                        ui_message.player["sitting"] = 0
-                elif event_name == DealerEvents.PLAYER_BET:
-                    seat["bet"] = event["bet"]
-                    seat["action"] = "<span>Bet<br/>{0}</span>".format(event["bet"])
-
-        if response.chats:
-            for chat in response.chats:
-                chat_message = self.ui_client.create_chat(chat.message)
-                ui_message.chat.append(chat_message)
+        self.process_table_data(response, ui_message)
+        self.process_event_data(response, ui_message)
+        self.process_chat_data(response, ui_message)
 
         self.ui_client.send_message(ui_message)
         self.logger.debug("table_status complete")
 
     def bet(self, amount):
-        self.logger.debug("bet, amount: {0}", amount)
+        self.logger.debug("bet, amount: {0}".format(amount))
         table_id = self.auto_create_table()
         player_id = self.auto_create_player()
 
-        response = self.dealer_client.player_bet(table_id, player_id, amount)
+        response = self.dealer_client.bet(table_id, player_id, amount)
 
     def fold(self):
         self.logger.debug("fold")
         table_id = self.auto_create_table()
         player_id = self.auto_create_player()
 
-        response = self.dealer_client.player_fold(table_id, player_id)
+        response = self.dealer_client.fold(table_id, player_id)
 
     def chat(self, chat_message):
         self.logger.debug("chat: {0}".format(chat_message))
@@ -150,8 +114,8 @@ class UiService(object):
 
     def reset(self):
         self.logger.debug("reset")
+
         # Clear the table/lobby
-        self.settings.set("default_lobby_id", None)
         self.settings.set("default_table_id", None)
         self.settings.temp_player_id = None
 
@@ -159,26 +123,17 @@ class UiService(object):
         self.table_status(None)
 
     def auto_create_table(self):
-        default_lobby_id = self.settings.get("default_lobby_id")
-        default_table_id = self.settings.get("default_table_id")
-
-        if default_lobby_id is None:
-            self.logger.debug("No default_lobby_id found in settings. Automatically creating a default lobby")
-            response = self.dealer_client.create_lobby("Default lobby")
-            default_lobby_id = response.lobby["id"]
-            self.settings.set("default_lobby_id", default_lobby_id)
+        default_table_id = self.settings.default_table_id
 
         if default_table_id is None:
-            self.logger.debug("No default_table_id found in settings. Automatically creating a default table")
-            response = self.dealer_client.create_table(default_lobby_id, "Default table")
+            self.logger.debug("No default_table_id found in settings. Automatically getting the default table")
+            response = self.dealer_client.get_default_table()
             default_table_id = response.table["id"]
-            self.settings.set("default_table_id", default_table_id)
+            self.settings.default_table_id = default_table_id
 
         return default_table_id
 
     def auto_create_player(self):
-        # This works different to auto_create_table. Here we create a new player
-        # every time the application starts up
         player_id = self.settings.temp_player_id
 
         if not player_id:
@@ -198,3 +153,128 @@ class UiService(object):
                 if seat.get("seat_number", None) == seat_number:
                     return seat
         return None
+
+    def process_table_data(self, response, ui_message):
+        if not response.table:
+            return False
+
+        player_id = self.auto_create_player()
+
+        active_seat_number = response.table.get("active_seat_number")
+
+        pot = []
+        if response.table.get("pot"):
+            pot.append(response.table.get("pot", 0))
+        else:
+            pot.append(0)
+
+        timer = 0
+        if response.table.get("turn_time_start"):
+            timer = 1
+
+        ui_message.deal = self.ui_client.create_deal(
+            dealer=response.table.get("dealer_seat_number"),
+            hole_cards=None,
+            board_cards=response.table.get("board_cards")
+        )
+
+        ui_message.game = self.ui_client.create_game(
+            game_type="No Limit Hold em<br>Blinds: 10/20",
+            limit=100,
+            pot=pot,
+            big_blind=response.table.get("big_blind"),
+            to_call=response.table.get("current_bet"))
+
+        if "seats" in response.table:
+            for item in response.table["seats"]:
+                self.logger.debug("Processing seat: {0}".format(item))
+
+                seat_player_id = item.get("player_id")
+                seat_number = item.get("seat_number")
+
+                if seat_player_id == player_id:
+                    if seat_number is not None and seat_number == active_seat_number:
+                        ui_message.game["myturn"] = 1
+                    else:
+                        ui_message.game["myturn"] = 0
+
+                    # TODO: Timer
+
+                    is_player = 1
+                    ui_message.player = self.ui_client.create_player(
+                        sitting=1,
+                        hole_cards=item.get("hole_cards"),
+                        stack=item.get("stack"),
+                        seat_number=item.get("seat_number"),
+                    )
+
+                    #ui_message.game["holecards"] = ui_message.player["holecards"]
+                else:
+                    is_player = 0
+
+                seat = self.ui_client.create_seat_item(
+                    seat_number=item.get("seat_number"),
+                    stack=item.get("stack"),
+                    player=is_player,
+                    playing=1,
+                    empty=0,
+                    player_cards=item.get("hole_cards"),
+                    bet=item.get("bet"),
+                    name=item.get("username")
+                )
+                ui_message.seats.append(seat)
+
+        return True
+
+    def process_event_data(self, response, ui_message):
+        if not response.events:
+            return False
+
+        player_id = self.auto_create_player()
+
+        for event in response.events:
+            event_name = event.get("event_name", "")
+            seat_number = event.get("seat_number", "-1")
+            seat = self.get_matching_seat(ui_message.seats, seat_number)
+
+            if seat is None:
+                seat = self.ui_client.create_seat_item(seat_number=seat_number)
+            #    ui_message.seats.append(seat)
+
+            if event_name == DealerEvents.PLAYER_JOIN_TABLE:
+                seat["empty"] = 0
+            elif event_name == DealerEvents.PLAYER_LEAVE_TABLE:
+                seat["empty"] = 1
+                if seat.get("player_id", None) == player_id:
+                    ui_message.player["sitting"] = 0
+            elif event_name == DealerEvents.PLAYER_BET:
+                seat["bet"] = event.get("bet", "0")
+                seat["action"] = "<span>Bet<br/>{0}</span>".format(seat["bet"])
+            elif event_name == DealerEvents.PLAYER_CHECK:
+                seat["action"] = "<span>Check</span>"
+            elif event_name == DealerEvents.PLAYER_FOLD:
+                seat["action"] = "<span>Fold</span>"
+            elif event_name == DealerEvents.PLAYER_CALL:
+                ui_message.action = self.ui_client.create_return_player_cards(seat_number)
+                seat["bet"] = event.get("bet", 0)
+                seat["action"] = "<span>Call</span>"
+            elif event_name == DealerEvents.PLAYER_RAISE:
+                seat["bet"] = event.get("bet", 0)
+                seat["action"] = "<span>Raise<br/>{0}</span>".format(seat["bet"])
+            elif event_name == DealerEvents.HAND_COMPLETE:
+                ui_message.action = self.ui_client.create_chips_to_pot()
+
+        return True
+
+    def process_chat_data(self, response, ui_message):
+        if not response.chats:
+            return False
+
+        for chat in response.chats:
+            chat_message = self.ui_client.create_chat(chat.get("message"))
+            ui_message.chat.append(chat_message)
+
+        return True
+
+    def create_empty_ui_message(self):
+        return PangeaMessage(seats=[], chat=[], player={"sitting": 0})

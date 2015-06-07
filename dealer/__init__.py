@@ -1,8 +1,9 @@
 import traceback
 import json
 import logging
-from time import mktime
-from datetime import datetime
+import time
+import datetime
+import calendar
 
 from wsgiref.handlers import format_date_time
 from tornado.httpclient import HTTPClient, HTTPRequest, HTTPError
@@ -52,6 +53,10 @@ class DealerClient(object):
         body = PangeaMessage(lobby_id=lobby_id, name=name)
         return self.send_request("tables", "POST", body)
 
+    def get_default_table(self):
+        body = PangeaMessage(use_default=True)
+        return self.send_request("tables", "POST", body)
+
     def get_tables(self, lobby_id=None):
         endpoint = "tables"
         if lobby_id:
@@ -79,6 +84,14 @@ class DealerClient(object):
         body = PangeaMessage(table_id=table_id, player_id=player_id, amount=amount)
         return self.send_request("bets", "POST", body)
 
+    def check(self, table_id, player_id):
+        body = PangeaMessage(table_id=table_id, player_id=player_id, check=True)
+        return self.send_request("bets", "POST", body)
+
+    def fold(self, table_id, player_id):
+        body = PangeaMessage(table_id=table_id, player_id=player_id, fold=True)
+        return self.send_request("bets", "POST", body)
+
     # -- Chat --
     def create_chat(self, table_id, player_id, chat_message):
         body = PangeaMessage(table_id=table_id, player_id=player_id, chat_message=chat_message)
@@ -88,8 +101,8 @@ class DealerClient(object):
         url = self.base_url + endpoint
         headers = {"Content-Type": "application/json"}
 
-        if if_modified_since and isinstance(if_modified_since, datetime):
-            stamp = mktime(if_modified_since.timetuple())
+        if if_modified_since and isinstance(if_modified_since, datetime.datetime):
+            stamp = calendar.timegm(if_modified_since.timetuple())
             headers["If-Modified-Since"] = format_date_time(stamp)
 
         request = HTTPRequest(url=url, method=method, headers=headers)
@@ -134,3 +147,9 @@ class DealerEvents(object):
     PLAYER_JOIN_TABLE = "player_join"
     PLAYER_LEAVE_TABLE = "player_leave"
     PLAYER_BET = "player_bet"
+    PLAYER_CHECK = "player_check"
+    PLAYER_FOLD = "player_fold"
+    PLAYER_CALL = "player_call"
+    PLAYER_RAISE = "player_call"
+    HAND_COMPLETE = "hand_complete"
+    HAND_DEAL = "hand_deal"

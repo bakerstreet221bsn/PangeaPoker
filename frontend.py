@@ -10,7 +10,7 @@ from dealer import DealerClient
 import urllib
 from datetime import datetime
 from tornado.ioloop import PeriodicCallback
-from utils.settings import Settings
+import utils.settings
 import logging
 
 example_requests = [
@@ -28,7 +28,7 @@ class PangeaApplication(tornado.web.Application):
         #message_queue = PikaQueueServer(port)
         #message_queue.start()
 
-        settings = Settings()
+        settings = utils.settings.Settings()
         frontend_path = settings.get("frontend_path", "../pangea-poker-frontend/client")
 
         handlers = [
@@ -70,6 +70,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
     dealer_client = None
     ui_client = None
     ui_service = None
+    settings = None
 
     def initialize(self, message_queue):
         self.message_queue = message_queue
@@ -93,15 +94,23 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
     def on_close(self):
         self.log.debug("Websocket connection closed")
         self.stop_status_poll()
-        self.ui_service.leave_table()
+
+        try:
+            if utils.settings.joined_table:
+                self.ui_service.leave_table()
+        except Exception:
+            self.log.debug("Got exception when sending a 'leave table' request to the dealer after " +
+                           "the client websocket disconnected".format(traceback.format_exc()))
 
     def on_message(self, message):
-        print("Received message: {0}".format(message))
+        self.log.debug("Received message: {0}".format(message))
 
         try:
             self.ui_service.handle_message(message)
         except Exception as ex:
-            print("Got exception while trying to process a message from the web socket: %s" % traceback.format_exc())
+            self.log.debug("Got exception while trying to process a message from the web socket: {0}"
+                           .format(traceback.format_exc()))
+
             response = PangeaMessage.from_exception("", ex)
             self.write_message(response.to_json())
 

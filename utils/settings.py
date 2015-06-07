@@ -3,12 +3,14 @@ import os
 import logging
 import traceback
 
+joined_table = False
 
 class Settings(object):
 
     logger = logging.getLogger(__name__)
     file_name = "settings.yaml"
     temp_player_id = None
+    default_table_id = None
 
     def get(self, name, default_value=None):
         settings = self.load_settings()
