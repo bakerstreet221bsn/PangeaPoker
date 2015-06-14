@@ -30,13 +30,15 @@ class PangeaApplication(tornado.web.Application):
 
         settings = utils.settings.Settings()
         frontend_path = settings.get("frontend_path", "../pangea-poker-frontend/client")
+        images_path = urllib.parse.urljoin(frontend_path, "images")
 
         handlers = [
             (r"/test/css/(.*)", tornado.web.StaticFileHandler, {"path": "./static"}),
             (r"/test/js/(.*)", tornado.web.StaticFileHandler, {"path": "./static"}),
             (r"/test", MainHandler, dict(port=port)),
             (r"/api/ws", WebSocketHandler, dict(message_queue=message_queue)),
-            (r"/(.*)", tornado.web.StaticFileHandler, {"path": frontend_path, "default_filename": "index.html"})
+            (r"/(.*)", tornado.web.StaticFileHandler, {"path": frontend_path, "default_filename": "index.html"}),
+            (r"/images/(.*)", tornado.web.StaticFileHandler, {"path": images_path})
         ]
 
         settings = {
@@ -61,7 +63,7 @@ class MainHandler(tornado.web.RequestHandler):
 class WebSocketHandler(tornado.websocket.WebSocketHandler):
     log = logging.getLogger(__name__)
 
-    POLL_TIME = 5000  # 5 seconds
+    POLL_TIME = 1000  # 1 seconds
     polling = False
     poll_callback = None
     last_poll_time = None

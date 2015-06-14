@@ -57,6 +57,12 @@ class DealerClient(object):
         body = PangeaMessage(use_default=True)
         return self.send_request("tables", "POST", body)
 
+    def delete_table(self, table_id):
+        return self.send_request("tables?table_id={0}".format(table_id), "DELETE")
+
+    def delete_default_table(self):
+        return self.send_request("tables?default=true", "DELETE")
+
     def get_tables(self, lobby_id=None):
         endpoint = "tables"
         if lobby_id:
@@ -153,3 +159,12 @@ class DealerEvents(object):
     PLAYER_RAISE = "player_call"
     HAND_COMPLETE = "hand_complete"
     HAND_DEAL = "hand_deal"
+
+
+class PangaeaDealerErrorCodes():
+    NA = 0
+    InvalidArgumentError = 200
+    NotFoundError = 201
+    AlreadyExists = 202
+    BettingError = 203
+    ServerError = 299
